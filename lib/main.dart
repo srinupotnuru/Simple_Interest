@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class Common extends State<MyApp> {
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.subhead;
 
-    debugPrint("created");
+    log('created');
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
