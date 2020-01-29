@@ -7,7 +7,7 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: "stateful widget",
-    home: MyApp(),
+    home: Scaffold(body: MyApp()),
     theme: ThemeData(
       brightness: Brightness.dark,
       primaryColor: Colors.indigo,
@@ -22,6 +22,7 @@ class MyApp extends StatefulWidget {
   }
 }
 
+
 class Common extends State<MyApp> {
   var formkey=GlobalKey<FormState>();
   var currency = ["rupees", "dollars", "euro"];
@@ -33,6 +34,8 @@ class Common extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.subhead;
+
+    parentContext = context;
 
     log('created');
     return Scaffold(
@@ -57,6 +60,7 @@ class Common extends State<MyApp> {
                   if(value.isEmpty){
                     return  "please enter principal amount!";
                   }
+                  else return null;
                  
 
                 },
@@ -81,6 +85,7 @@ class Common extends State<MyApp> {
                     {
                       return "please enter rate of interest!";
                     }
+                    else return null;
                     
 
                   },
@@ -108,6 +113,7 @@ class Common extends State<MyApp> {
                           {
                             return "please enter term !";
                           }
+                          else return null;
                        
                         },
                         keyboardType: TextInputType.number,
@@ -156,7 +162,9 @@ class Common extends State<MyApp> {
                           if(formkey.currentState.validate() )
                           setState(() {
                             if(formkey.currentState.validate() )
-                            {this.total = calcTotal();}
+                            {this.total = calcTotal();
+                              showdialog(total);
+                            }
                           });
                         },
                       ),
@@ -184,15 +192,52 @@ class Common extends State<MyApp> {
               ),
               Padding(
                 padding: EdgeInsets.all(5),
-                child: Text(
-                  this.total,
-                  style: textStyle,
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      this.total,
+                      style: textStyle,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 2),
+                    borderRadius: BorderRadius.circular(5)
+                  ),
                 ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  var parentContext;
+
+  showdialog(msg){
+    showDialog(
+      context: parentContext,
+      builder: (sheetContext){
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text('Total',style: TextStyle(color: Colors.black),),
+          elevation: 10,
+           shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+              ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK',style: TextStyle(color: Colors.black),),
+              onPressed: ()=>Navigator.pop(sheetContext),
+            )
+          ],
+          content: Padding(
+            padding: EdgeInsets.all(10),
+            child: Text(msg,style: TextStyle(color: Colors.black),),
+          ),
+        );
+      }
     );
   }
 
