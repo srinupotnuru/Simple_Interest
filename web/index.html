@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Simple_Interest</title>
-</head>
-<body>
-  <script src="main.dart.js" type="application/javascript"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Interest</title>
+    <meta name="author" content="Srinu Potnuru" />
+    <meta name="description" content="A Simple Interest Calculator." />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+2&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./icon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <script>
+      function calc() {
+        var p = parseInt(document.getElementById("p").value);
+        var t = parseInt(document.getElementById("t").value);
+        var r = parseInt(document.getElementById("r").value);
+
+        var sol = (p * t * r) / 100;
+        console.log(sol);
+        alert("Simple Interest: " + sol);
+        document.getElementById("p").value = "";
+        document.getElementById("t").value = "";
+        document.getElementById("r").value = "";
+      }
+    </script>
+    <div>
+      <h1>Simple Interest Calculator</h1>
+      <input id="p" type="number" placeholder="Principal" />
+      <input id="r" type="number" placeholder="Rate% / Annum" />
+      <input id="t" type="number" placeholder="Time" />
+      <button onclick="calc()">Done</button>
+    </div>
+  </body>
 </html>

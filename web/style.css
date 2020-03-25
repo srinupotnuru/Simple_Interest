@@ -1,0 +1,79 @@
+html,
+body {
+  height: 100%;
+}
+h1 {
+  font-family: "Baloo 2", cursive;
+  color: teal;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: antiquewhite;
+}
+
+input {
+  outline: none;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  border: 2px solid lightblue;
+}
+
+input:hover {
+  transition-duration: 500ms;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px grey;
+}
+
+div {
+  background-color: white;
+  padding: 50px;
+  border-radius: 50px;
+  margin: auto;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 2px 10px grey;
+}
+
+button {
+  outline: none;
+  height: 70px;
+  margin: 20px;
+  background-color: lightblue;
+  border: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+button:hover {
+  transition-duration: 500ms;
+  box-shadow: 2px 2px 5px grey;
+  border-radius: 20px;
+}
+
+button:active {
+  box-shadow: 2px 2px 10px grey;
+}
+
+@media only screen and (max-width: 980px) {
+  input {
+    width: 40vh;
+    font-size: 30px;
+    height: 3.5vh;
+  }
+  h1 {
+    font-size: 50px;
+    margin: auto;
+    padding: 50px;
+  }
+
+  button {
+    font-size: 40px;
+    height: 100px;
+  }
+}
